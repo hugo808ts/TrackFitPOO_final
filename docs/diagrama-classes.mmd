@@ -1,0 +1,76 @@
+classDiagram
+    class Pessoa {
+        <<abstract>>
+        -int id
+        -String nome
+        -String email
+    }
+
+    class Atleta {
+        -double pesoKg
+        -ObjetivoTreino objetivo
+        -Treinador treinador
+    }
+
+    class Treinador {
+        -String especialidade
+        -String cref
+    }
+
+    class CargaCalculavel {
+        <<interface>>
+        +calcularCarga(ItemTreino) double
+        +descreverFormula() String
+    }
+
+    class Exercicio {
+        <<abstract>>
+        -int id
+        -String nome
+        -String grupo
+        +getTipo() String
+    }
+
+    class ExercicioForca {
+        +calcularCarga(ItemTreino) double
+    }
+
+    class ExercicioCardio {
+        +calcularCarga(ItemTreino) double
+    }
+
+    class Treino {
+        -int id
+        -LocalDate data
+        -String observacoes
+        -List~ItemTreino~ itens
+        +calcularCargaTotal() double
+        +classificarCarga() String
+    }
+
+    class ItemTreino {
+        -Exercicio exercicio
+        -int series
+        -int repeticoes
+        -double cargaKg
+        -double duracaoMinutos
+        -double distanciaKm
+        -int intensidade
+        +calcularCarga() double
+    }
+
+    class AcademiaService
+    class BancoDados
+    class DadosSistema
+
+    Pessoa <|-- Atleta
+    Pessoa <|-- Treinador
+    CargaCalculavel <|.. Exercicio
+    Exercicio <|-- ExercicioForca
+    Exercicio <|-- ExercicioCardio
+    Atleta o-- Treinador
+    Treino *-- ItemTreino
+    ItemTreino --> Exercicio
+    Treino --> Atleta
+    AcademiaService --> DadosSistema
+    AcademiaService --> BancoDados
