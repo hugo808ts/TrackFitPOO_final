@@ -68,6 +68,4 @@ TrackFitPOO/
     br/com/trackfit/ui/
 ```
 
-## Observacao
 
-O relatorio em PDF esta em `docs/relatorio-trackfit.pdf`. Os nomes dos integrantes e o link do GitHub devem ser preenchidos pelo grupo antes da entrega final.
